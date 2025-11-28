@@ -27,7 +27,7 @@ def click_and_type(text):
     pyautogui.write(text)
 
 
-def find_and_click_with_scroll(image_path, text, confidence=0.5, max_attempts=5):
+def find_with_scroll(image_path, confidence=0.5, max_attempts=5):
     """
     Try to find the image on screen, click and type text. If not found, scroll down and retry up to max_attempts.
     Raises ImageNotFoundException if not found after all attempts.
@@ -38,7 +38,6 @@ def find_and_click_with_scroll(image_path, text, confidence=0.5, max_attempts=5)
     while attempt < max_attempts:
         try:
             if move_mouse_to_button(image_path, confidence=confidence):
-                click_and_type(text)
                 return True
             else:
                 raise ImageNotFoundException
@@ -69,9 +68,7 @@ def main():
     print(f"Screenshot size: {screenshot.size}")
 
     try:
-        find_and_click_with_scroll(
-            "goal_3.png", "Hello, DuckDuckGo!", confidence=0.5, max_attempts=5
-        )
+        find_with_scroll("goal_3.png", confidence=0.5, max_attempts=5)
         print("Done! ✅")
     except pyautogui.ImageNotFoundException as e:
         print(f"Button not found on screen after scrolling: {e}")
