@@ -1,5 +1,4 @@
 import pyautogui
-import time
 from pynput import keyboard
 
 
@@ -11,7 +10,7 @@ def locate_image(image_path, confidence=0.9):
         return None
 
 
-def scroll_page(direction='down', steps=10):
+def scroll_page(direction='down', steps=5):
     """Scroll the page using arrow keys"""
     key = 'down' if direction == 'down' else 'up'
     for _ in range(steps):
@@ -27,14 +26,10 @@ def find_and_click(image_path):
     print(f"\nSearching for {image_path}...")
     location = locate_image(image_path)
 
-    # Scroll down to find it
+    # Scroll down to find it (from current mouse position)
     if not location:
-        pyautogui.click(screenWidth // 2, screenHeight // 2)
-        time.sleep(0.3)
-
         for _ in range(20):
             scroll_page('down', steps=10)
-            time.sleep(0.5)
             location = locate_image(image_path)
             if location:
                 break
@@ -45,10 +40,8 @@ def find_and_click(image_path):
         adjusted_x = int(center.x / scale)
         adjusted_y = int(center.y / scale)
 
-        pyautogui.moveTo(adjusted_x, adjusted_y, duration=0.5)
-        time.sleep(0.2)
+        pyautogui.moveTo(adjusted_x, adjusted_y, duration=0.1)
         pyautogui.click(adjusted_x, adjusted_y)
-        time.sleep(0.2)
         pyautogui.click(adjusted_x, adjusted_y)
         print(f"Clicked {image_path}!")
         return True
@@ -66,29 +59,24 @@ def on_activate():
     # Step 1
     if not find_and_click('step1.png'):
         return
-    time.sleep(1)
 
     # Step 2
     if not find_and_click('step2.png'):
         return
-    time.sleep(0.5)
 
     # Paste from clipboard
     print("\nPasting from clipboard...")
     pyautogui.hotkey('command', 'v')
-    time.sleep(1)
 
     # Step 3: Type "skull"
     if not find_and_click('step3.png'):
         return
     print("\nTyping 'skull'...")
     pyautogui.write('skull')
-    time.sleep(0.5)
 
     # Step 4: Find and select
     if not find_and_click('step4.png'):
         return
-    time.sleep(1)
 
     # Step 5: Scroll down to find
     find_and_click('step5.png')
