@@ -12,7 +12,7 @@ class EMRAutomationApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Heidi - EMR Automation")
-        self.root.geometry("380x350")
+        self.root.geometry("380x450")
         self.root.resizable(False, False)  # Fixed size - no resizing
         
         self.script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -51,8 +51,20 @@ class EMRAutomationApp:
         # Profile selection
         tk.Label(self.root, text="Available EMR Profiles:", font=("Helvetica", 11)).pack(pady=(15, 5))
         
-        self.radio_frame = tk.Frame(self.root)
-        self.radio_frame.pack()
+        # Scrollable frame for profiles
+        self.profile_container = tk.Frame(self.root)
+        self.profile_container.pack(fill="both", expand=True, padx=20)
+        
+        self.canvas = tk.Canvas(self.profile_container, height=120, highlightthickness=0)
+        self.scrollbar = tk.Scrollbar(self.profile_container, orient="vertical", command=self.canvas.yview)
+        self.radio_frame = tk.Frame(self.canvas)
+        
+        self.canvas.configure(yscrollcommand=self.scrollbar.set)
+        self.scrollbar.pack(side="right", fill="y")
+        self.canvas.pack(side="left", fill="both", expand=True)
+        self.canvas_window = self.canvas.create_window((0, 0), window=self.radio_frame, anchor="nw")
+        
+        self.radio_frame.bind("<Configure>", lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all")))
         
         self.refresh_profiles()
         
