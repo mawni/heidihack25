@@ -1,6 +1,7 @@
 import os
 import hashlib
 import requests
+import json
 from pathlib import Path
 
 
@@ -10,6 +11,8 @@ PROFILES_DIR = "emr_profiles"
 # List of EMR profiles to download
 EMR_PROFILES = [
     "open-mrs",
+    "openmrsv4",
+    "test",
     # Add more profiles here as needed
 ]
 
@@ -72,6 +75,47 @@ def needs_update(url, local_path):
         return True
 
 
+def download_config(profile_name):
+    """Download config.json for a given EMR profile"""
+    print(f"  - Downloading config.json for {profile_name}")
+
+    profile_dir = Path(PROFILES_DIR) / profile_name
+    profile_dir.mkdir(parents=True, exist_ok=True)
+
+    url = f"{BASE_URL}/{profile_name}/config.json"
+    local_path = profile_dir / "config.json"
+
+    if needs_update(url, local_path):
+        if download_file(url, local_path):
+            return True
+    else:
+        print(f"  ≈ Skipped (up to date): config.json")
+        return True
+
+    return False
+
+
+def update_config_step(profile_name):
+    """
+    Overwrite the stepImage in config.json for a given profile to point to the correct local step image path.
+    """
+    config_path = Path(PROFILES_DIR) / profile_name / "config.json"
+    if not config_path.exists():
+        print(f"Config not found for profile: {profile_name}")
+        return
+    with open(config_path, "r") as f:
+        config = json.load(f)
+    steps = config.get("steps", [])
+    for step in steps:
+        order = step.get("order")
+        if order:
+            step["stepImage"] = f"./emr_profiles/{profile_name}/step{order}.png"
+    config["steps"] = steps
+    with open(config_path, "w") as f:
+        json.dump(config, f, indent=2)
+    print(f"Overwritten stepImage paths in {config_path}")
+
+
 def download_profile_images(profile_name, max_steps=10):
     """Download all step images for a given EMR profile"""
     print(f"\nProcessing profile: {profile_name}")
@@ -93,8 +137,8 @@ def download_profile_images(profile_name, max_steps=10):
         try:
             response = requests.head(url)
             if response.status_code == 404:
-                print(f"  - No more steps found (stopped at step{step_num})")
-                break
+                print(f"  - No step {step_num} found )")
+                continue
         except requests.exceptions.RequestException:
             print(f"  - Could not check {filename}, stopping")
             break
@@ -124,7 +168,8 @@ def main():
         downloaded, skipped = download_profile_images(profile)
         total_downloaded += downloaded
         total_skipped += skipped
-
+    download_config(profile)
+    update_config_step(profile)
     print("\n" + "=" * 50)
     print(f"Total: {total_downloaded} downloaded, {total_skipped} skipped")
     print("=" * 50)
