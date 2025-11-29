@@ -1,0 +1,11 @@
+{
+  "sequenceName": "Demo",
+  "description": "Demo sequence for testing",
+  "steps": [
+    {
+      "order": 1,
+      "action": "type",
+      "stepText": "Hello from demo!"
+    }
+  ]
+}

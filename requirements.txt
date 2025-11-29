@@ -1,3 +1,6 @@
 # Add your project dependencies here
 pyautogui
 opencv-python
+pynput
+requests
+pyobjc-framework-Quartz
