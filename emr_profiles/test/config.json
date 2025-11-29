@@ -1,0 +1,41 @@
+{
+  "profile": "Test",
+  "steps": [
+    {
+      "order": 1,
+      "action": "find_and_click",
+      "stepImage": "./emr_profiles/test/step1.png"
+    },
+    {
+      "order": 2,
+      "action": "find_and_click",
+      "stepImage": "./emr_profiles/test/step2.png"
+    },
+    {
+      "order": 3,
+      "action": "type",
+      "stepText": "skull",
+      "stepImage": "./emr_profiles/test/step3.png"
+    },
+    {
+      "order": 4,
+      "action": "find_and_click",
+      "stepImage": "./emr_profiles/test/step4.png"
+    },
+    {
+      "order": 5,
+      "action": "find_and_click",
+      "stepImage": "./emr_profiles/test/step5.png"
+    },
+    {
+      "order": 6,
+      "action": "paste_from_clipboard",
+      "stepImage": "./emr_profiles/test/step6.png"
+    },
+    {
+      "order": 7,
+      "action": "find_with_scroll",
+      "stepImage": "./emr_profiles/test/step7.png"
+    }
+  ]
+}

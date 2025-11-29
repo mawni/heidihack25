@@ -1,0 +1,40 @@
+{
+  "sequenceName": "OpenMRS",
+  "description": "Consult note transfer sequence for OpenMRS EMR from Heidi",
+  "steps": [
+    {
+      "order": 1,
+      "action": "find_and_click",
+      "stepImage": "./emr_profiles/open-mrs/step1.png"
+    },
+    {
+      "order": 2,
+      "action": "find_and_click",
+      "stepImage": "./emr_profiles/open-mrs/step2.png"
+    },
+    {
+      "order": 3,
+      "action": "type",
+      "stepText": "skull"
+    },
+    {
+      "order": 4,
+      "action": "find_and_click",
+      "stepImage": "./emr_profiles/open-mrs/step3.png"
+    },
+    {
+      "order": 5,
+      "action": "find_with_scroll",
+      "stepImage": "./emr_profiles/open-mrs/step4.png"
+    },
+    {
+      "order": 6,
+      "action": "paste_from_clipboard"
+    },
+    {
+      "order": 7,
+      "action": "find_with_scroll",
+      "stepImage": "./emr_profiles/open-mrs/step5.png"
+    }
+  ]
+}

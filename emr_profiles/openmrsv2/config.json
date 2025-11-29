@@ -1,0 +1,45 @@
+{
+  "profile": "OpenMRSv2",
+  "steps": [
+    {
+      "order": 1,
+      "action": "find_and_click",
+      "step_image": "./emr_profiles/openmrsv2/step1.png"
+    },
+    {
+      "order": 2,
+      "action": "find_and_click",
+      "step_image": "./emr_profiles/openmrsv2/step2.png"
+    },
+    {
+      "order": 3,
+      "action": "click",
+      "step_image": null
+    },
+    {
+      "order": 4,
+      "action": "type",
+      "step_image": ""
+    },
+    {
+      "order": 5,
+      "action": "find_and_click",
+      "step_image": "./emr_profiles/openmrsv2/step5.png"
+    },
+    {
+      "order": 6,
+      "action": "find_and_click",
+      "step_image": "./emr_profiles/openmrsv2/step6.png"
+    },
+    {
+      "order": 7,
+      "action": "paste_from_clipboard",
+      "step_image": null
+    },
+    {
+      "order": 8,
+      "action": "find_with_scroll",
+      "step_image": "./emr_profiles/openmrsv2/step8.png"
+    }
+  ]
+}
