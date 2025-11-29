@@ -14,7 +14,8 @@
     },
     {
       "order": 3,
-      "action": "paste_from_clipboard"
+      "action": "type",
+      "stepText": "skull"
     },
     {
       "order": 4,
@@ -23,13 +24,12 @@
     },
     {
       "order": 5,
-      "action": "type",
-      "stepText": "skull"
+      "action": "find_with_scroll",
+      "stepImage": "./emr_profiles/open-mrs/step4.png"
     },
     {
       "order": 6,
-      "action": "find_with_scroll",
-      "stepImage": "./emr_profiles/open-mrs/step4.png"
+      "action": "paste_from_clipboard"
     },
     {
       "order": 7,
