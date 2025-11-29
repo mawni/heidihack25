@@ -13,6 +13,7 @@ EMR_PROFILES = [
     "open-mrs",
     "openmrsv4",
     "test",
+    "openmrsv7",
     # Add more profiles here as needed
 ]
 
