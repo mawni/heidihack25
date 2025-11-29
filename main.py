@@ -43,7 +43,7 @@ def locate_image(image_path, confidence=0.5):
 
 def scroll_page(direction="down", steps=5):
     """Scroll the page using arrow keys"""
-    pyautogui.scroll(-5)
+    pyautogui.scroll(-2)
     # key = "down" if direction == "down" else "up"
     # for _ in range(steps):
     #     pyautogui.press(key)

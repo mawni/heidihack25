@@ -33,7 +33,7 @@
     },
     {
       "order": 7,
-      "action": "find_and_click",
+      "action": "find_with_scroll",
       "stepImage": "./config/openmrs/images/step5.png"
     }
   ]
