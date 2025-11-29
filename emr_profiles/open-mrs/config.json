@@ -5,12 +5,12 @@
     {
       "order": 1,
       "action": "find_and_click",
-      "stepImage": "./config/open-mrs/step1.png"
+      "stepImage": "./emr_profiles/open-mrs/step1.png"
     },
     {
       "order": 2,
       "action": "find_and_click",
-      "stepImage": "./config/open-mrs/step2.png"
+      "stepImage": "./emr_profiles/open-mrs/step2.png"
     },
     {
       "order": 3,
@@ -19,7 +19,7 @@
     {
       "order": 4,
       "action": "find_and_click",
-      "stepImage": "./config/open-mrs/step3.png"
+      "stepImage": "./emr_profiles/open-mrs/step3.png"
     },
     {
       "order": 5,
@@ -29,12 +29,12 @@
     {
       "order": 6,
       "action": "find_with_scroll",
-      "stepImage": "./config/open-mrs/step4.png"
+      "stepImage": "./emr_profiles/open-mrs/step4.png"
     },
     {
       "order": 7,
       "action": "find_with_scroll",
-      "stepImage": "./config/open-mrs/step5.png"
+      "stepImage": "./emr_profiles/open-mrs/step5.png"
     }
   ]
 }

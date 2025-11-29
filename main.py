@@ -123,7 +123,7 @@ def on_activate():
     print("Starting automation sequence...")
     print("=" * 50)
 
-    config_path = os.path.join("config", "openmrs", "config.json")
+    config_path = os.path.join("emr_profiles", "open-mrs", "config.json")
     run_sequence_from_config(config_path)
 
 
